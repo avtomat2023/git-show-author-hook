@@ -15,10 +15,3 @@ Drop `prepare-commit-msg` into git template hook directory.
 Then `git init` in your git projects. Even in existing projects, `git init` is no problem.
 
 After the setup above, this hook turns enable whenever you `git init` or `git clone`.
-======================
- git-show-author-hook
-======================
-
-A git hook to show author when editing commit message.
-
-.. image:: description.tiff
