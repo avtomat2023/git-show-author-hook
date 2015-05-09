@@ -2,7 +2,7 @@
 
 A git hook to show author when editing commit message.
 
-![Commit message editing with this hook](./description.tiff)
+![Commit message editing with this hook](description.png)
 
 ## Installation
 
