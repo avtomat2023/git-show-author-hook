@@ -4,6 +4,10 @@ A git hook to show author when editing commit message.
 
 ![Commit message editing with this hook](description.png)
 
+## Requirement
+
+- python
+
 ## Installation
 
 Drop `prepare-commit-msg` into git template hook directory.
