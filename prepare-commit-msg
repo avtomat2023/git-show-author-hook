@@ -4,8 +4,15 @@ import subprocess
 import os
 
 filename = sys.argv[1]
+
 with open(filename, 'rb') as f:
     lines = f.readlines()
+
+# When 'git commit -m', the commit command runs with --cleanup=whitespace,
+# in other words, lines with leading '#' are not treated as comments.
+# To avoid this, makes sure that the template message contains a comment line.
+if not any(line.startswith(b'#') for line in lines):
+    sys.exit(0)
 
 name = subprocess.check_output(["git", "config", "user.name"]).rstrip()
 email = subprocess.check_output(["git", "config", "user.email"]).rstrip()
