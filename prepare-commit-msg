@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 import sys
 import subprocess
-import os
 
 filename = sys.argv[1]
+source = sys.argv[2] if len(sys.argv) > 2 else None
 
 with open(filename, 'rb') as f:
     lines = f.readlines()
 
-# When 'git commit -m', the commit command runs with --cleanup=whitespace,
-# in other words, lines with leading '#' are not treated as comments.
-# To avoid this, makes sure that the template message contains a comment line.
-if not any(line.startswith(b'#') for line in lines):
+# When 'git commit -m' or 'git commit -F',
+# the commit command runs with --cleanup=whitespace, in other words,
+# lines with leading '#' are not treated as comments.
+# So do nothing with -m or -F option.
+if source == 'message':
     sys.exit(0)
 
 name = subprocess.check_output(["git", "config", "user.name"]).rstrip()
